@@ -4,28 +4,35 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Материалы к еженедельному ВКС</title>
-  <meta name="description" content="Единая страница материалов к еженедельному ВКС" />
+  <meta name="description" content="Компактная страница материалов к еженедельному ВКС" />
   <style>
-    :root{--bg:#eef4fb;--card:#fff;--card-soft:#f8fbff;--text:#18324b;--muted:#617892;--line:#dbe6f2;--blue:#0b67b2;--blue-2:#328bd4;--green:#1f9d69;--yellow:#c58a00;--red:#c53d3d;--shadow:0 14px 36px rgba(18,49,79,.08);--radius-xl:24px;--radius-lg:18px;--radius-md:14px}
-    *{box-sizing:border-box} html{scroll-behavior:smooth} body{margin:0;font:16px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Roboto,Arial,sans-serif;color:var(--text);background:linear-gradient(180deg,#eef4fb 0%,#e7f0f9 100%)}
-    a{color:var(--blue);text-decoration:none}.wrap{max-width:1440px;margin:0 auto;padding:20px}.hero,.toolbar,.summary,.card,.info-box,.update-box,.modal-card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius-xl);box-shadow:var(--shadow)}
-    .hero{padding:28px;margin-bottom:18px;background:linear-gradient(135deg,#fff 0%,#f6fbff 100%)} .hero-top{display:grid;grid-template-columns:1.5fr .9fr;gap:18px;align-items:start}.hero h1{margin:0 0 10px;font-size:34px;line-height:1.1}.hero p{margin:0;color:var(--muted)}
-    .badges{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}.badge{display:inline-flex;align-items:center;gap:8px;padding:8px 12px;border-radius:999px;border:1px solid #d4e9fb;background:#eef7ff;color:var(--blue);font-weight:700;font-size:14px}
-    .hero-side{padding:18px;border-radius:var(--radius-lg);background:var(--card-soft);border:1px solid var(--line)} .hero-side h3{margin-top:0;margin-bottom:10px}.hero-side ul{margin:0;padding-left:18px}
-    .toolbar{padding:14px;margin-bottom:18px;display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between}.toolbar-left,.toolbar-right{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
-    .btn,.select,.search{border:1px solid var(--line);background:#fff;color:var(--text);border-radius:12px;padding:10px 14px;font:inherit}.btn{cursor:pointer;font-weight:600}.btn.primary{background:linear-gradient(180deg,var(--blue-2),var(--blue));color:#fff;border-color:transparent}.search{min-width:260px}
-    .summary{padding:20px;margin-bottom:18px}.summary h2{margin:0 0 14px}.stats{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}.stat{padding:14px;background:var(--card-soft);border:1px solid var(--line);border-radius:16px}.stat b{display:block;font-size:30px;color:var(--blue);line-height:1;margin-bottom:8px}
-    .meta-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-bottom:18px}.info-box,.update-box{padding:18px}.info-box h3,.update-box h3{margin-top:0}
-    .documents-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:16px}.card{padding:22px;position:relative;overflow:hidden}.card::before{content:"";position:absolute;left:0;top:0;width:5px;height:100%;background:linear-gradient(180deg,var(--blue),var(--blue-2))}
-    .card-header{display:flex;gap:12px;align-items:start;justify-content:space-between;margin-bottom:12px}.card-title{font-size:21px;font-weight:800;line-height:1.2;margin:0}.status{display:inline-flex;align-items:center;gap:6px;padding:6px 10px;border-radius:999px;font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.04em;white-space:nowrap}
-    .status.green{background:#e9f8f1;color:#166c47;border:1px solid #c6ead8}.status.yellow{background:#fff6df;color:#8f6200;border:1px solid #f1dc97}.status.red{background:#fff0f0;color:#9d2e2e;border:1px solid #efc3c3}.status.gray{background:#f3f6fa;color:#617892;border:1px solid #d8e1ea}
-    .desc{color:var(--muted);margin:0 0 14px}.card-meta{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-bottom:14px}.meta-pill{padding:10px 12px;background:var(--card-soft);border:1px solid var(--line);border-radius:12px;font-size:14px}.meta-pill b{display:block;font-size:12px;text-transform:uppercase;letter-spacing:.04em;color:var(--muted);margin-bottom:4px}
-    .key-points{margin:0 0 16px;padding-left:18px}.actions{display:flex;flex-wrap:wrap;gap:10px}.actions a,.actions button{border:1px solid var(--line);background:#fff;color:var(--blue);border-radius:12px;padding:10px 12px;font:inherit;font-weight:700;cursor:pointer}.actions a.primary{background:linear-gradient(180deg,var(--blue-2),var(--blue));color:#fff;border-color:transparent}
-    .block-tag{display:inline-block;margin-bottom:10px;color:var(--blue);background:#eef7ff;border:1px solid #d5eafb;padding:6px 10px;border-radius:999px;font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.05em}.footer{margin-top:18px;padding:18px;color:var(--muted);font-size:14px}.hidden{display:none!important}
-    .modal{position:fixed;inset:0;background:rgba(10,27,42,.44);display:none;align-items:center;justify-content:center;padding:20px;z-index:200}.modal.show{display:flex}.modal-card{max-width:760px;width:100%;padding:22px}.modal-head{display:flex;justify-content:space-between;gap:12px;align-items:start;margin-bottom:14px}.modal-close{background:#fff;border:1px solid var(--line);border-radius:12px;padding:8px 12px;cursor:pointer}
-    .code{background:#f7faff;border:1px solid var(--line);border-radius:14px;padding:14px;white-space:pre-wrap;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:13px}
-    .error-box{padding:16px;background:#fff0f0;border:1px solid #efc3c3;border-radius:16px;color:#9d2e2e}
-    @media (max-width:980px){.hero-top,.meta-grid,.stats{grid-template-columns:1fr}.toolbar{align-items:stretch}.toolbar-left,.toolbar-right{width:100%}.search{flex:1;min-width:0;width:100%}.card-meta{grid-template-columns:1fr}}
+    :root{
+      --bg:#eef4fb;--panel:#fff;--panel2:#f7fbff;--text:#18324b;--muted:#687f97;--line:#dbe6f2;
+      --blue:#0b67b2;--blue2:#2f8bd6;--green:#198754;--yellow:#b98500;--red:#c53d3d;
+      --shadow:0 16px 40px rgba(16,44,72,.08);--rxl:24px;--rlg:18px;--rmd:14px;
+    }
+    *{box-sizing:border-box} html{scroll-behavior:smooth} body{margin:0;font:16px/1.45 -apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Roboto,Arial,sans-serif;color:var(--text);background:linear-gradient(180deg,#eef4fb 0%,#e7f0f9 100%)}
+    a{text-decoration:none;color:var(--blue)} .wrap{max-width:1380px;margin:0 auto;padding:18px}
+    .hero,.toolbar,.summary,.panel,.group,.modal-card{background:var(--panel);border:1px solid var(--line);border-radius:var(--rxl);box-shadow:var(--shadow)}
+    .hero{padding:24px;margin-bottom:16px;background:linear-gradient(135deg,#fff 0%,#f6fbff 100%)}
+    .hero-top{display:grid;grid-template-columns:1.4fr .95fr;gap:16px;align-items:start}.hero h1{margin:0 0 8px;font-size:32px;line-height:1.08}.hero p{margin:0;color:var(--muted)}
+    .badge-row{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}.badge{display:inline-flex;align-items:center;padding:8px 12px;border-radius:999px;background:#eef7ff;border:1px solid #d8ebfb;color:var(--blue);font-size:13px;font-weight:800}
+    .hero-side{padding:16px;background:var(--panel2);border:1px solid var(--line);border-radius:var(--rlg)} .hero-side h3{margin:0 0 10px}.hero-side ul{margin:0;padding-left:18px}
+    .toolbar{padding:12px 14px;margin-bottom:16px;display:flex;gap:10px;justify-content:space-between;align-items:center;flex-wrap:wrap}.toolbar-left,.toolbar-right{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+    .search,.select,.btn{border:1px solid var(--line);background:#fff;color:var(--text);border-radius:12px;padding:10px 12px;font:inherit}.search{min-width:250px}.btn{cursor:pointer;font-weight:700}.btn.primary{background:linear-gradient(180deg,var(--blue2),var(--blue));color:#fff;border-color:transparent}
+    .summary{padding:18px;margin-bottom:16px}.summary-head{display:flex;justify-content:space-between;gap:12px;align-items:start;flex-wrap:wrap}.summary h2{margin:0 0 12px}.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:8px}.stat{padding:14px;background:var(--panel2);border:1px solid var(--line);border-radius:16px}.stat b{display:block;font-size:28px;line-height:1;color:var(--blue);margin-bottom:6px}
+    .top-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px}.panel{padding:18px}.panel h3{margin:0 0 10px}.meta-list{display:grid;gap:10px}.meta-item{padding:12px 14px;background:var(--panel2);border:1px solid var(--line);border-radius:14px}.meta-item b{display:block;font-size:12px;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);margin-bottom:4px}
+    .groups{display:grid;gap:14px}.group{overflow:hidden}.group summary{list-style:none;cursor:pointer;padding:18px 20px;display:flex;align-items:center;justify-content:space-between;gap:12px;background:linear-gradient(180deg,#fff 0%,#f8fbfe 100%)}.group summary::-webkit-details-marker{display:none}
+    .group-left{min-width:0}.group-kicker{font-size:12px;text-transform:uppercase;letter-spacing:.06em;color:var(--blue);font-weight:800;margin-bottom:4px}.group-title{font-size:22px;font-weight:800;line-height:1.15}.group-sub{color:var(--muted);font-size:14px;margin-top:4px}
+    .group-right{display:flex;align-items:center;gap:10px;flex:0 0 auto}.chip{display:inline-flex;align-items:center;padding:7px 10px;border-radius:999px;font-size:12px;font-weight:800;border:1px solid #d8ebfb;background:#eef7ff;color:var(--blue)}.chev{width:34px;height:34px;border-radius:999px;background:#eef7ff;border:1px solid #d8ebfb;display:inline-flex;align-items:center;justify-content:center;color:var(--blue);font-size:18px;transition:transform .2s ease} details[open] .chev{transform:rotate(180deg)}
+    .group-body{padding:0 18px 18px;border-top:1px solid var(--line)} .group-body-inner{padding-top:16px}
+    .doc-list{display:grid;gap:12px}.doc{border:1px solid var(--line);border-radius:18px;background:#fff;padding:16px}.doc-top{display:flex;justify-content:space-between;gap:12px;align-items:start}.doc-title{font-size:18px;font-weight:800;line-height:1.2;margin:0}.status{display:inline-flex;align-items:center;padding:6px 10px;border-radius:999px;font-size:12px;font-weight:800;white-space:nowrap;border:1px solid transparent}
+    .status.green{background:#eaf8f0;color:#176b46;border-color:#c9ead8}.status.yellow{background:#fff7df;color:#8a6200;border-color:#f0dc97}.status.red{background:#fff0f0;color:#9d2e2e;border-color:#edc0c0}.status.gray{background:#f2f6fa;color:#71859a;border-color:#d8e1ea}
+    .doc-desc{color:var(--muted);margin:8px 0 12px}.doc-meta{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:12px}.doc-meta .meta-item{padding:10px 12px}
+    .doc-points{margin:0;padding-left:18px;color:var(--text)} .doc-points li{margin:4px 0}.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}.actions a{border:1px solid var(--line);border-radius:12px;padding:10px 12px;font-weight:700;background:#fff;color:var(--blue)}.actions a.primary{background:linear-gradient(180deg,var(--blue2),var(--blue));color:#fff;border-color:transparent}
+    .hidden{display:none!important}.footer{padding:16px;color:var(--muted);font-size:14px}.error-box{padding:16px;background:#fff0f0;border:1px solid #efc3c3;border-radius:16px;color:#9d2e2e}
+    .modal{position:fixed;inset:0;background:rgba(10,27,42,.44);display:none;align-items:center;justify-content:center;padding:20px;z-index:200}.modal.show{display:flex}.modal-card{max-width:760px;width:100%;padding:22px}.modal-head{display:flex;justify-content:space-between;gap:12px;align-items:start;margin-bottom:14px}.modal-close{background:#fff;border:1px solid var(--line);border-radius:12px;padding:8px 12px;cursor:pointer}.code{background:#f7faff;border:1px solid var(--line);border-radius:14px;padding:14px;white-space:pre-wrap;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:13px}
+    @media (max-width:1024px){.hero-top,.top-grid,.stats,.doc-meta{grid-template-columns:1fr}.search{min-width:0;width:100%}.toolbar-left,.toolbar-right{width:100%}.chip{display:none}}
   </style>
 </head>
 <body>
@@ -35,20 +42,20 @@
         <div>
           <h1 id="pageTitle">Материалы к еженедельному ВКС</h1>
           <p id="pageSubtitle"></p>
-          <div class="badges">
-            <span class="badge">1 ссылка для руководителя</span>
-            <span class="badge">Google Drive + Google Sheets</span>
-            <span class="badge">Яндекс.Диск</span>
-            <span class="badge">Еженедельная актуализация</span>
+          <div class="badge-row">
+            <span class="badge">Один адрес для руководителя</span>
+            <span class="badge">Компактная сводка сверху</span>
+            <span class="badge">Раскрытие только нужного блока</span>
+            <span class="badge">Данные из Google Sheets</span>
           </div>
         </div>
         <div class="hero-side">
-          <h3>Как это работает</h3>
+          <h3>Что изменилось</h3>
           <ul>
-            <li>Документы живут в облаках и обновляются на тех же ссылках</li>
-            <li>Сайт показывает только актуальные точки входа</li>
-            <li>По каждому блоку есть ответственный, статус и суть</li>
-            <li>Сотрудники правят только одну общую Google-таблицу</li>
+            <li>Убрана длинная “простыня” карточек</li>
+            <li>Материалы сгруппированы по блокам</li>
+            <li>Видна только сводка, детали по нажатию</li>
+            <li>Удобнее смотреть с телефона</li>
           </ul>
         </div>
       </div>
@@ -66,34 +73,41 @@
         </select>
       </div>
       <div class="toolbar-right">
+        <button class="btn" id="expandAllBtn">Раскрыть всё</button>
+        <button class="btn" id="collapseAllBtn">Свернуть всё</button>
         <button class="btn" id="showHelpBtn">Как обновлять</button>
-        <button class="btn primary" id="copyWeekSummaryBtn">Скопировать краткую сводку</button>
+        <button class="btn primary" id="copyWeekSummaryBtn">Скопировать сводку</button>
       </div>
     </section>
 
     <section class="summary">
-      <h2>Сводка по текущему набору материалов</h2>
+      <div class="summary-head">
+        <div>
+          <h2>Сводка по текущему набору материалов</h2>
+          <div id="summaryNote" class="desc"></div>
+        </div>
+      </div>
       <div class="stats" id="stats"></div>
     </section>
 
-    <section class="meta-grid">
-      <div class="info-box">
-        <h3>Текущая неделя</h3>
-        <p id="weekInfo" class="desc"></p>
+    <section class="top-grid">
+      <div class="panel">
+        <h3>Ключевая информация</h3>
+        <div class="meta-list">
+          <div class="meta-item"><b>Текущая неделя</b><span id="weekInfo"></span></div>
+          <div class="meta-item"><b>Последнее обновление</b><span id="pageUpdateInfo"></span></div>
+          <div class="meta-item"><b>Примечание</b><span id="ownerNote"></span></div>
+        </div>
       </div>
-      <div class="info-box">
-        <h3>Последнее обновление страницы</h3>
-        <p id="pageUpdateInfo" class="desc"></p>
-      </div>
-      <div class="update-box">
-        <h3>Примечание</h3>
-        <p id="ownerNote" class="desc"></p>
+      <div class="panel">
+        <h3>Фокус руководителя</h3>
+        <ul id="focusList" class="doc-points"></ul>
       </div>
     </section>
 
-    <section class="documents-grid" id="documentsGrid"></section>
+    <section class="groups" id="groupsRoot"></section>
 
-    <div class="footer" id="summaryNote"></div>
+    <div class="footer">Компактный режим: сначала сводка и фокус, ниже только раскрываемые смысловые блоки.</div>
   </div>
 
   <div class="modal" id="helpModal">
@@ -120,21 +134,16 @@
 
   <script>
     let pageData = null;
-
-    // ВАЖНО: сюда нужно подставить CSV-ссылку опубликованной Google-таблицы.
-    // Формат обычно такой:
-    // https://docs.google.com/spreadsheets/d/SPREADSHEET_ID/gviz/tq?tqx=out:csv&sheet=Лист1
     const GOOGLE_SHEET_CSV_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vRtcu8-OdWv4eYdK5DxThiigbimAse_a8FHB9KAJHgeXsYvBMkdmMwDrkZMFw3K6fb08d_c4x2T8tNt/pub?gid=331295079&single=true&output=csv';
-
-    const statusMap = { green: 'green', yellow: 'yellow', red: 'red', gray: 'gray' };
+    const statusMap = { green:'green', yellow:'yellow', red:'red', gray:'gray' };
     const statusLabelMap = {
-      'обновлено': { code: 'green', label: 'Обновлено' },
-      'требует внимания': { code: 'yellow', label: 'Требует внимания' },
-      'критично': { code: 'red', label: 'Критично' },
-      'без статуса': { code: 'gray', label: 'Без статуса' }
+      'обновлено': { code:'green', label:'Обновлено' },
+      'требует внимания': { code:'yellow', label:'Требует внимания' },
+      'критично': { code:'red', label:'Критично' },
+      'без статуса': { code:'gray', label:'Без статуса' }
     };
 
-    function renderMeta(meta) {
+    function renderMeta(meta){
       document.getElementById('pageTitle').textContent = meta.title || 'Материалы к еженедельному ВКС';
       document.getElementById('pageSubtitle').textContent = meta.subtitle || '';
       document.getElementById('weekInfo').textContent = meta.weekLabel || '';
@@ -143,183 +152,149 @@
       document.getElementById('summaryNote').textContent = meta.summaryNote || '';
     }
 
-    function renderStats(items) {
+    function renderStats(items){
       const total = items.length;
-      const green = items.filter(i => i.status === 'green').length;
-      const yellow = items.filter(i => i.status === 'yellow').length;
-      const red = items.filter(i => i.status === 'red').length;
-      const blocks = new Set(items.map(i => i.block)).size;
+      const green = items.filter(i=>i.status==='green').length;
+      const yellow = items.filter(i=>i.status==='yellow').length;
+      const red = items.filter(i=>i.status==='red').length;
+      const blocks = new Set(items.map(i=>i.block)).size;
       const stats = [
-        { value: total, label: 'Всего материалов' },
-        { value: green, label: 'Обновлено' },
-        { value: yellow, label: 'Требует внимания' },
-        { value: red, label: 'Критично' },
-        { value: blocks, label: 'Смысловых блоков' }
+        {value:total,label:'Всего материалов'},
+        {value:green,label:'Обновлено'},
+        {value:yellow,label:'Требует внимания'},
+        {value:red,label:'Критично'}
       ];
-      document.getElementById('stats').innerHTML = stats.map(s => `<div class="stat"><b>${s.value}</b><span>${s.label}</span></div>`).join('');
+      document.getElementById('stats').innerHTML = stats.map(s=>`<div class="stat"><b>${s.value}</b><span>${s.label}</span></div>`).join('');
+      document.getElementById('focusList').innerHTML = [
+        `Смысловых блоков: ${blocks}`,
+        `Красных зон: ${red}`,
+        `Жёлтых зон: ${yellow}`,
+        `Руководителю лучше начинать с блоков с жёлтым и красным статусом`
+      ].map(x=>`<li>${x}</li>`).join('');
     }
 
-    function createCard(item) {
-      const linksHtml = (item.links || []).map(link => `<a class="${link.primary ? 'primary' : ''}" href="${link.url}" target="_blank" rel="noreferrer">${link.label}</a>`).join('');
-      return `<article class="card document-card" data-status="${item.status}" data-search="${[item.title,item.block,item.owner,item.summary,item.weekComment].join(' ').toLowerCase()}">
-        <div class="block-tag">${item.block}</div>
-        <div class="card-header">
-          <h3 class="card-title">${item.title}</h3>
+    function buildDoc(item){
+      const linksHtml = (item.links || []).map(link=>`<a class="${link.primary ? 'primary' : ''}" href="${link.url}" target="_blank" rel="noreferrer">${link.label}</a>`).join('');
+      return `<article class="doc document-card" data-status="${item.status}" data-search="${[item.title,item.block,item.owner,item.summary,item.weekComment].join(' ').toLowerCase()}">
+        <div class="doc-top">
+          <h4 class="doc-title">${item.title}</h4>
           <span class="status ${statusMap[item.status] || 'gray'}">${item.statusLabel || 'Без статуса'}</span>
         </div>
-        <p class="desc">${item.summary || ''}</p>
-        <div class="card-meta">
-          <div class="meta-pill"><b>Ответственный</b>${item.owner || ''}</div>
-          <div class="meta-pill"><b>Обновлено</b>${item.updatedAt || ''}</div>
-          <div class="meta-pill"><b>Хранилище</b>${item.storage || ''}</div>
-          <div class="meta-pill"><b>Комментарий недели</b>${item.weekComment || ''}</div>
+        <p class="doc-desc">${item.summary || ''}</p>
+        <div class="doc-meta">
+          <div class="meta-item"><b>Ответственный</b>${item.owner || ''}</div>
+          <div class="meta-item"><b>Обновлено</b>${item.updatedAt || ''}</div>
+          <div class="meta-item"><b>Хранилище</b>${item.storage || ''}</div>
+          <div class="meta-item"><b>Комментарий недели</b>${item.weekComment || ''}</div>
         </div>
-        <ul class="key-points">${(item.keyPoints || []).map(p => `<li>${p}</li>`).join('')}</ul>
+        <ul class="doc-points">${(item.keyPoints||[]).map(p=>`<li>${p}</li>`).join('')}</ul>
         <div class="actions">${linksHtml}</div>
       </article>`;
     }
 
-    function renderDocuments(items) {
-      document.getElementById('documentsGrid').innerHTML = items.map(createCard).join('');
+    function renderGroups(items){
+      const grouped = {};
+      items.forEach(item=>{
+        if(!grouped[item.block]) grouped[item.block]=[];
+        grouped[item.block].push(item);
+      });
+      const groupsHtml = Object.entries(grouped).map(([block, docs], idx)=>{
+        const red = docs.filter(d=>d.status==='red').length;
+        const yellow = docs.filter(d=>d.status==='yellow').length;
+        const open = idx === 0 ? 'open' : '';
+        const subtitle = red ? `Критичных: ${red}` : yellow ? `Требует внимания: ${yellow}` : 'Все материалы в норме';
+        return `<details class="group block-group" ${open}>
+          <summary>
+            <div class="group-left">
+              <div class="group-kicker">Смысловой блок</div>
+              <div class="group-title">${block}</div>
+              <div class="group-sub">${subtitle}</div>
+            </div>
+            <div class="group-right">
+              <span class="chip">${docs.length} материал(а)</span>
+              <span class="chev">⌄</span>
+            </div>
+          </summary>
+          <div class="group-body"><div class="group-body-inner"><div class="doc-list">${docs.map(buildDoc).join('')}</div></div></div>
+        </details>`;
+      }).join('');
+      document.getElementById('groupsRoot').innerHTML = groupsHtml;
     }
 
-    function applyFilters() {
+    function applyFilters(){
       const q = document.getElementById('searchInput').value.trim().toLowerCase();
       const status = document.getElementById('statusFilter').value;
-      document.querySelectorAll('.document-card').forEach(card => {
+      document.querySelectorAll('.document-card').forEach(card=>{
         const textOk = !q || card.dataset.search.includes(q);
         const statusOk = status === 'all' || card.dataset.status === status;
         card.classList.toggle('hidden', !(textOk && statusOk));
       });
+      document.querySelectorAll('.block-group').forEach(group=>{
+        const visible = group.querySelectorAll('.document-card:not(.hidden)').length;
+        group.classList.toggle('hidden', visible === 0);
+      });
     }
 
-    function buildWeekSummaryText() {
-      if (!pageData) return '';
+    function buildWeekSummaryText(){
+      if(!pageData) return '';
       const grouped = {};
-      pageData.documents.forEach(doc => {
-        if (!grouped[doc.block]) grouped[doc.block] = [];
+      pageData.documents.forEach(doc=>{
+        if(!grouped[doc.block]) grouped[doc.block] = [];
         grouped[doc.block].push(`- ${doc.title}: ${doc.statusLabel}, ${doc.owner}, ${doc.updatedAt}`);
       });
-      const lines = [
-        'Краткая сводка по материалам ВКС',
-        `Неделя: ${pageData.meta.weekLabel}`,
-        `Обновление страницы: ${pageData.meta.pageUpdatedAt}`,
-        ''
-      ];
-      Object.entries(grouped).forEach(([block, items]) => {
-        lines.push(block);
-        lines.push(...items);
-        lines.push('');
-      });
+      const lines = ['Краткая сводка по материалам ВКС', `Неделя: ${pageData.meta.weekLabel}`, `Обновление страницы: ${pageData.meta.pageUpdatedAt}`, ''];
+      Object.entries(grouped).forEach(([block, items])=>{ lines.push(block); lines.push(...items); lines.push(''); });
       return lines.join('\n');
     }
 
-    async function copyWeekSummary() {
-      const text = buildWeekSummaryText();
-      try {
-        await navigator.clipboard.writeText(text);
-        alert('Краткая сводка скопирована');
-      } catch {
-        alert('Не удалось скопировать автоматически');
-      }
+    async function copyWeekSummary(){
+      try{ await navigator.clipboard.writeText(buildWeekSummaryText()); alert('Сводка скопирована'); }
+      catch{ alert('Не удалось скопировать автоматически'); }
     }
 
-    function showHelp(show) {
-      document.getElementById('helpModal').classList.toggle('show', show);
-    }
+    function showHelp(show){ document.getElementById('helpModal').classList.toggle('show', show); }
+    function parseCsvLine(line){ const result=[]; let current=''; let inQuotes=false; for(let i=0;i<line.length;i++){ const char=line[i], next=line[i+1]; if(char==='"'){ if(inQuotes && next==='"'){ current+='"'; i++; } else { inQuotes=!inQuotes; } } else if(char===',' && !inQuotes){ result.push(current); current=''; } else { current+=char; } } result.push(current); return result; }
+    function parseCsv(text){ const lines=text.replace(/^\uFEFF/,'').split(/\r?\n/).filter(Boolean); if(!lines.length) return []; const headers=parseCsvLine(lines[0]); return lines.slice(1).map(line=>{ const values=parseCsvLine(line); const row={}; headers.forEach((h,i)=>row[h]=values[i]||''); return row; }); }
 
-    function parseCsvLine(line) {
-      const result = [];
-      let current = '';
-      let inQuotes = false;
-      for (let i = 0; i < line.length; i++) {
-        const char = line[i];
-        const next = line[i + 1];
-        if (char === '"') {
-          if (inQuotes && next === '"') {
-            current += '"';
-            i++;
-          } else {
-            inQuotes = !inQuotes;
-          }
-        } else if (char === ',' && !inQuotes) {
-          result.push(current);
-          current = '';
-        } else {
-          current += char;
-        }
-      }
-      result.push(current);
-      return result;
-    }
-
-    function parseCsv(text) {
-      const lines = text.replace(/^\uFEFF/, '').split(/\r?\n/).filter(Boolean);
-      if (!lines.length) return [];
-      const headers = parseCsvLine(lines[0]);
-      return lines.slice(1).map(line => {
-        const values = parseCsvLine(line);
-        const row = {};
-        headers.forEach((header, idx) => row[header] = values[idx] || '');
-        return row;
-      });
-    }
-
-    function normalizeSheetRows(rows) {
-      const documents = rows
-        .filter(row => String(row['Показывать блок'] || '').toUpperCase() !== 'FALSE')
-        .map(row => {
-          const rawStatus = String(row['Статус'] || 'Без статуса').trim().toLowerCase();
-          const normalizedStatus = statusLabelMap[rawStatus] || { code: 'gray', label: row['Статус'] || 'Без статуса' };
-          const links = [];
-          if (row['Основная ссылка']) links.push({ label: 'Открыть материал', url: row['Основная ссылка'], primary: true });
-          if (row['Резервная ссылка']) links.push({ label: 'Резервная ссылка', url: row['Резервная ссылка'], primary: false });
-          return {
-            id: `${row['Блок'] || 'block'}-${row['Название материала'] || 'item'}`.toLowerCase().replace(/\s+/g, '-'),
-            block: row['Блок'] || '',
-            title: row['Название материала'] || '',
-            status: normalizedStatus.code,
-            statusLabel: normalizedStatus.label,
-            owner: row['Ответственный'] || '',
-            updatedAt: row['Дата обновления'] || '',
-            storage: row['Хранилище'] || '',
-            summary: row['Краткое описание'] || '',
-            weekComment: row['Комментарий недели'] || '',
-            keyPoints: [row['Тезис 1'], row['Тезис 2'], row['Тезис 3']].filter(Boolean),
-            links,
-            sortOrder: Number(row['Порядок сортировки'] || 999)
-          };
-        })
-        .sort((a, b) => a.sortOrder - b.sortOrder);
-
+    function normalizeSheetRows(rows){
+      const documents = rows.filter(row=>String(row['Показывать блок']||'').toUpperCase()!=='FALSE').map(row=>{
+        const rawStatus = String(row['Статус'] || 'Без статуса').trim().toLowerCase();
+        const normalizedStatus = statusLabelMap[rawStatus] || { code:'gray', label: row['Статус'] || 'Без статуса' };
+        const links=[]; if(row['Основная ссылка']) links.push({label:'Открыть материал',url:row['Основная ссылка'],primary:true}); if(row['Резервная ссылка']) links.push({label:'Резервная ссылка',url:row['Резервная ссылка'],primary:false});
+        return {
+          id:`${row['Блок']||'block'}-${row['Название материала']||'item'}`.toLowerCase().replace(/\s+/g,'-'),
+          block:row['Блок']||'', title:row['Название материала']||'', status:normalizedStatus.code, statusLabel:normalizedStatus.label,
+          owner:row['Ответственный']||'', updatedAt:row['Дата обновления']||'', storage:row['Хранилище']||'', summary:row['Краткое описание']||'', weekComment:row['Комментарий недели']||'',
+          keyPoints:[row['Тезис 1'],row['Тезис 2'],row['Тезис 3']].filter(Boolean), links, sortOrder:Number(row['Порядок сортировки']||999)
+        };
+      }).sort((a,b)=>a.sortOrder-b.sortOrder);
       return {
-        meta: {
-          title: 'Материалы к еженедельному ВКС',
-          subtitle: 'Единая страница для руководителя с актуальными ссылками на документы в облачных хранилищах.',
-          weekLabel: 'Неделя обновляется через заголовок таблицы или вручную в коде',
-          pageUpdatedAt: new Date().toLocaleString('ru-RU'),
-          ownerNote: 'Данные загружаются из Google Sheets. Сотрудники меняют только строки своей зоны ответственности.',
-          summaryNote: 'Если документ обновлен в облаке и строка в таблице актуализирована, страница автоматически покажет новое состояние.'
+        meta:{
+          title:'Материалы к еженедельному ВКС',
+          subtitle:'Компактная витрина для руководителя. Сначала суть, детали только по раскрытию блока.',
+          weekLabel:'Неделя обновляется через Google-таблицу',
+          pageUpdatedAt:new Date().toLocaleString('ru-RU'),
+          ownerNote:'Данные загружаются из Google Sheets. Сотрудники меняют только строки своей зоны ответственности.',
+          summaryNote:'Страница специально упрощена: сначала сводка, затем только раскрываемые блоки.'
         },
         documents
       };
     }
 
-    async function loadData() {
-      try {
-        if (!GOOGLE_SHEET_CSV_URL) {
-          throw new Error('GOOGLE_SHEET_CSV_URL is empty');
-        }
-        const res = await fetch(GOOGLE_SHEET_CSV_URL, { cache: 'no-store' });
-        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    async function loadData(){
+      try{
+        if(!GOOGLE_SHEET_CSV_URL) throw new Error('GOOGLE_SHEET_CSV_URL is empty');
+        const res = await fetch(GOOGLE_SHEET_CSV_URL, { cache:'no-store' });
+        if(!res.ok) throw new Error(`HTTP ${res.status}`);
         const csvText = await res.text();
         const rows = parseCsv(csvText);
         pageData = normalizeSheetRows(rows);
         renderMeta(pageData.meta || {});
         renderStats(pageData.documents || []);
-        renderDocuments(pageData.documents || []);
-      } catch (err) {
-        document.getElementById('documentsGrid').innerHTML = `<div class="error-box">Не удалось загрузить данные из Google Sheets. Нужно подставить в код опубликованную CSV-ссылку таблицы в переменную <b>GOOGLE_SHEET_CSV_URL</b>.</div>`;
+        renderGroups(pageData.documents || []);
+        applyFilters();
+      } catch(err){
+        document.getElementById('groupsRoot').innerHTML = `<div class="error-box">Не удалось загрузить данные из Google Sheets. Проверь опубликованную CSV-ссылку.</div>`;
         console.error(err);
       }
     }
@@ -327,10 +302,11 @@
     document.getElementById('searchInput').addEventListener('input', applyFilters);
     document.getElementById('statusFilter').addEventListener('change', applyFilters);
     document.getElementById('copyWeekSummaryBtn').addEventListener('click', copyWeekSummary);
-    document.getElementById('showHelpBtn').addEventListener('click', () => showHelp(true));
-    document.getElementById('closeHelpBtn').addEventListener('click', () => showHelp(false));
-    document.getElementById('helpModal').addEventListener('click', (e) => { if (e.target.id === 'helpModal') showHelp(false); });
-
+    document.getElementById('showHelpBtn').addEventListener('click', ()=>showHelp(true));
+    document.getElementById('closeHelpBtn').addEventListener('click', ()=>showHelp(false));
+    document.getElementById('helpModal').addEventListener('click', e=>{ if(e.target.id==='helpModal') showHelp(false); });
+    document.getElementById('expandAllBtn').addEventListener('click', ()=>document.querySelectorAll('.block-group').forEach(d=>d.open=true));
+    document.getElementById('collapseAllBtn').addEventListener('click', ()=>document.querySelectorAll('.block-group').forEach(d=>d.open=false));
     loadData();
   </script>
 </body>
