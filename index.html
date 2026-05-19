@@ -1,0 +1,244 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Материалы к еженедельному ВКС</title>
+  <meta name="description" content="Единая страница материалов к еженедельному ВКС" />
+  <style>
+    :root{--bg:#eef4fb;--card:#fff;--card-soft:#f8fbff;--text:#18324b;--muted:#617892;--line:#dbe6f2;--blue:#0b67b2;--blue-2:#328bd4;--green:#1f9d69;--yellow:#c58a00;--red:#c53d3d;--shadow:0 14px 36px rgba(18,49,79,.08);--radius-xl:24px;--radius-lg:18px;--radius-md:14px}
+    *{box-sizing:border-box} html{scroll-behavior:smooth} body{margin:0;font:16px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Roboto,Arial,sans-serif;color:var(--text);background:linear-gradient(180deg,#eef4fb 0%,#e7f0f9 100%)}
+    a{color:var(--blue);text-decoration:none}.wrap{max-width:1440px;margin:0 auto;padding:20px}.hero,.toolbar,.summary,.card,.info-box,.update-box,.modal-card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius-xl);box-shadow:var(--shadow)}
+    .hero{padding:28px;margin-bottom:18px;background:linear-gradient(135deg,#fff 0%,#f6fbff 100%)} .hero-top{display:grid;grid-template-columns:1.5fr .9fr;gap:18px;align-items:start}.hero h1{margin:0 0 10px;font-size:34px;line-height:1.1}.hero p{margin:0;color:var(--muted)}
+    .badges{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}.badge{display:inline-flex;align-items:center;gap:8px;padding:8px 12px;border-radius:999px;border:1px solid #d4e9fb;background:#eef7ff;color:var(--blue);font-weight:700;font-size:14px}
+    .hero-side{padding:18px;border-radius:var(--radius-lg);background:var(--card-soft);border:1px solid var(--line)} .hero-side h3{margin-top:0;margin-bottom:10px}.hero-side ul{margin:0;padding-left:18px}
+    .toolbar{padding:14px;margin-bottom:18px;display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between}.toolbar-left,.toolbar-right{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+    .btn,.select,.search{border:1px solid var(--line);background:#fff;color:var(--text);border-radius:12px;padding:10px 14px;font:inherit}.btn{cursor:pointer;font-weight:600}.btn.primary{background:linear-gradient(180deg,var(--blue-2),var(--blue));color:#fff;border-color:transparent}.search{min-width:260px}
+    .summary{padding:20px;margin-bottom:18px}.summary h2{margin:0 0 14px}.stats{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}.stat{padding:14px;background:var(--card-soft);border:1px solid var(--line);border-radius:16px}.stat b{display:block;font-size:30px;color:var(--blue);line-height:1;margin-bottom:8px}
+    .meta-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-bottom:18px}.info-box,.update-box{padding:18px}.info-box h3,.update-box h3{margin-top:0}
+    .documents-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:16px}.card{padding:22px;position:relative;overflow:hidden}.card::before{content:"";position:absolute;left:0;top:0;width:5px;height:100%;background:linear-gradient(180deg,var(--blue),var(--blue-2))}
+    .card-header{display:flex;gap:12px;align-items:start;justify-content:space-between;margin-bottom:12px}.card-title{font-size:21px;font-weight:800;line-height:1.2;margin:0}.status{display:inline-flex;align-items:center;gap:6px;padding:6px 10px;border-radius:999px;font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.04em;white-space:nowrap}
+    .status.green{background:#e9f8f1;color:#166c47;border:1px solid #c6ead8}.status.yellow{background:#fff6df;color:#8f6200;border:1px solid #f1dc97}.status.red{background:#fff0f0;color:#9d2e2e;border:1px solid #efc3c3}.status.gray{background:#f3f6fa;color:#617892;border:1px solid #d8e1ea}
+    .desc{color:var(--muted);margin:0 0 14px}.card-meta{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-bottom:14px}.meta-pill{padding:10px 12px;background:var(--card-soft);border:1px solid var(--line);border-radius:12px;font-size:14px}.meta-pill b{display:block;font-size:12px;text-transform:uppercase;letter-spacing:.04em;color:var(--muted);margin-bottom:4px}
+    .key-points{margin:0 0 16px;padding-left:18px}.actions{display:flex;flex-wrap:wrap;gap:10px}.actions a,.actions button{border:1px solid var(--line);background:#fff;color:var(--blue);border-radius:12px;padding:10px 12px;font:inherit;font-weight:700;cursor:pointer}.actions a.primary{background:linear-gradient(180deg,var(--blue-2),var(--blue));color:#fff;border-color:transparent}
+    .block-tag{display:inline-block;margin-bottom:10px;color:var(--blue);background:#eef7ff;border:1px solid #d5eafb;padding:6px 10px;border-radius:999px;font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.05em}.footer{margin-top:18px;padding:18px;color:var(--muted);font-size:14px}.hidden{display:none!important}
+    .modal{position:fixed;inset:0;background:rgba(10,27,42,.44);display:none;align-items:center;justify-content:center;padding:20px;z-index:200}.modal.show{display:flex}.modal-card{max-width:760px;width:100%;padding:22px}.modal-head{display:flex;justify-content:space-between;gap:12px;align-items:start;margin-bottom:14px}.modal-close{background:#fff;border:1px solid var(--line);border-radius:12px;padding:8px 12px;cursor:pointer}
+    .code{background:#f7faff;border:1px solid var(--line);border-radius:14px;padding:14px;white-space:pre-wrap;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:13px}
+    .error-box{padding:16px;background:#fff0f0;border:1px solid #efc3c3;border-radius:16px;color:#9d2e2e}
+    @media (max-width:980px){.hero-top,.meta-grid,.stats{grid-template-columns:1fr}.toolbar{align-items:stretch}.toolbar-left,.toolbar-right{width:100%}.search{flex:1;min-width:0;width:100%}.card-meta{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <section class="hero">
+      <div class="hero-top">
+        <div>
+          <h1 id="pageTitle">Материалы к еженедельному ВКС</h1>
+          <p id="pageSubtitle"></p>
+          <div class="badges">
+            <span class="badge">1 ссылка для руководителя</span>
+            <span class="badge">Google Drive + Google Sheets</span>
+            <span class="badge">Яндекс.Диск</span>
+            <span class="badge">Еженедельная актуализация</span>
+          </div>
+        </div>
+        <div class="hero-side">
+          <h3>Как это работает</h3>
+          <ul>
+            <li>Документы живут в облаках и обновляются на тех же ссылках</li>
+            <li>Сайт показывает только актуальные точки входа</li>
+            <li>По каждому блоку есть ответственный, статус и суть</li>
+            <li>Для обновления страницы достаточно править только JSON-файл</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="toolbar">
+      <div class="toolbar-left">
+        <input id="searchInput" class="search" type="search" placeholder="Поиск по названию, ответственному, блоку" />
+        <select id="statusFilter" class="select">
+          <option value="all">Все статусы</option>
+          <option value="green">Обновлено</option>
+          <option value="yellow">Требует внимания</option>
+          <option value="red">Критично</option>
+          <option value="gray">Без статуса</option>
+        </select>
+      </div>
+      <div class="toolbar-right">
+        <button class="btn" id="showHelpBtn">Как обновлять</button>
+        <button class="btn primary" id="copyWeekSummaryBtn">Скопировать краткую сводку</button>
+      </div>
+    </section>
+
+    <section class="summary">
+      <h2>Сводка по текущему набору материалов</h2>
+      <div class="stats" id="stats"></div>
+    </section>
+
+    <section class="meta-grid">
+      <div class="info-box">
+        <h3>Текущая неделя</h3>
+        <p id="weekInfo" class="desc"></p>
+      </div>
+      <div class="info-box">
+        <h3>Последнее обновление страницы</h3>
+        <p id="pageUpdateInfo" class="desc"></p>
+      </div>
+      <div class="update-box">
+        <h3>Примечание</h3>
+        <p id="ownerNote" class="desc"></p>
+      </div>
+    </section>
+
+    <section class="documents-grid" id="documentsGrid"></section>
+
+    <div class="footer" id="summaryNote"></div>
+  </div>
+
+  <div class="modal" id="helpModal">
+    <div class="modal-card">
+      <div class="modal-head">
+        <div>
+          <h2 style="margin:0 0 8px">Как обновлять страницу каждую неделю</h2>
+          <div class="desc">Меняйте только JSON-файл, а не верстку. Ссылки на облачные документы должны быть постоянными.</div>
+        </div>
+        <button class="modal-close" id="closeHelpBtn">Закрыть</button>
+      </div>
+      <div class="code">1. Открыть data/documents.json
+2. Обновить weekLabel и pageUpdatedAt
+3. По нужным блокам обновить:
+   - status
+   - statusLabel
+   - updatedAt
+   - weekComment
+   - keyPoints
+4. Ссылки менять только если реально изменился адрес документа
+5. Закоммитить изменения в GitHub Pages репозиторий</div>
+    </div>
+  </div>
+
+  <script>
+    let pageData = null;
+
+    const statusMap = { green: 'green', yellow: 'yellow', red: 'red', gray: 'gray' };
+
+    function renderMeta(meta) {
+      document.getElementById('pageTitle').textContent = meta.title || 'Материалы к еженедельному ВКС';
+      document.getElementById('pageSubtitle').textContent = meta.subtitle || '';
+      document.getElementById('weekInfo').textContent = meta.weekLabel || '';
+      document.getElementById('pageUpdateInfo').textContent = meta.pageUpdatedAt || '';
+      document.getElementById('ownerNote').textContent = meta.ownerNote || '';
+      document.getElementById('summaryNote').textContent = meta.summaryNote || '';
+    }
+
+    function renderStats(items) {
+      const total = items.length;
+      const green = items.filter(i => i.status === 'green').length;
+      const yellow = items.filter(i => i.status === 'yellow').length;
+      const red = items.filter(i => i.status === 'red').length;
+      const blocks = new Set(items.map(i => i.block)).size;
+      const stats = [
+        { value: total, label: 'Всего материалов' },
+        { value: green, label: 'Обновлено' },
+        { value: yellow, label: 'Требует внимания' },
+        { value: red, label: 'Критично' },
+        { value: blocks, label: 'Смысловых блоков' }
+      ];
+      document.getElementById('stats').innerHTML = stats.map(s => `<div class="stat"><b>${s.value}</b><span>${s.label}</span></div>`).join('');
+    }
+
+    function createCard(item) {
+      const linksHtml = (item.links || []).map(link => `<a class="${link.primary ? 'primary' : ''}" href="${link.url}" target="_blank" rel="noreferrer">${link.label}</a>`).join('');
+      return `<article class="card document-card" data-status="${item.status}" data-search="${[item.title,item.block,item.owner,item.summary,item.weekComment].join(' ').toLowerCase()}">
+        <div class="block-tag">${item.block}</div>
+        <div class="card-header">
+          <h3 class="card-title">${item.title}</h3>
+          <span class="status ${statusMap[item.status] || 'gray'}">${item.statusLabel || 'Без статуса'}</span>
+        </div>
+        <p class="desc">${item.summary || ''}</p>
+        <div class="card-meta">
+          <div class="meta-pill"><b>Ответственный</b>${item.owner || ''}</div>
+          <div class="meta-pill"><b>Обновлено</b>${item.updatedAt || ''}</div>
+          <div class="meta-pill"><b>Хранилище</b>${item.storage || ''}</div>
+          <div class="meta-pill"><b>Комментарий недели</b>${item.weekComment || ''}</div>
+        </div>
+        <ul class="key-points">${(item.keyPoints || []).map(p => `<li>${p}</li>`).join('')}</ul>
+        <div class="actions">${linksHtml}</div>
+      </article>`;
+    }
+
+    function renderDocuments(items) {
+      document.getElementById('documentsGrid').innerHTML = items.map(createCard).join('');
+    }
+
+    function applyFilters() {
+      const q = document.getElementById('searchInput').value.trim().toLowerCase();
+      const status = document.getElementById('statusFilter').value;
+      document.querySelectorAll('.document-card').forEach(card => {
+        const textOk = !q || card.dataset.search.includes(q);
+        const statusOk = status === 'all' || card.dataset.status === status;
+        card.classList.toggle('hidden', !(textOk && statusOk));
+      });
+    }
+
+    function buildWeekSummaryText() {
+      if (!pageData) return '';
+      const grouped = {};
+      pageData.documents.forEach(doc => {
+        if (!grouped[doc.block]) grouped[doc.block] = [];
+        grouped[doc.block].push(`- ${doc.title}: ${doc.statusLabel}, ${doc.owner}, ${doc.updatedAt}`);
+      });
+      const lines = [
+        'Краткая сводка по материалам ВКС',
+        `Неделя: ${pageData.meta.weekLabel}`,
+        `Обновление страницы: ${pageData.meta.pageUpdatedAt}`,
+        ''
+      ];
+      Object.entries(grouped).forEach(([block, items]) => {
+        lines.push(block);
+        lines.push(...items);
+        lines.push('');
+      });
+      return lines.join('\n');
+    }
+
+    async function copyWeekSummary() {
+      const text = buildWeekSummaryText();
+      try {
+        await navigator.clipboard.writeText(text);
+        alert('Краткая сводка скопирована');
+      } catch {
+        alert('Не удалось скопировать автоматически');
+      }
+    }
+
+    function showHelp(show) {
+      document.getElementById('helpModal').classList.toggle('show', show);
+    }
+
+    async function loadData() {
+      try {
+        const res = await fetch('./data/documents.json', { cache: 'no-store' });
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        pageData = await res.json();
+        renderMeta(pageData.meta || {});
+        renderStats(pageData.documents || []);
+        renderDocuments(pageData.documents || []);
+      } catch (err) {
+        document.getElementById('documentsGrid').innerHTML = `<div class="error-box">Не удалось загрузить data/documents.json. Проверь, что файл лежит по пути <b>data/documents.json</b> и опубликован в GitHub Pages.</div>`;
+        console.error(err);
+      }
+    }
+
+    document.getElementById('searchInput').addEventListener('input', applyFilters);
+    document.getElementById('statusFilter').addEventListener('change', applyFilters);
+    document.getElementById('copyWeekSummaryBtn').addEventListener('click', copyWeekSummary);
+    document.getElementById('showHelpBtn').addEventListener('click', () => showHelp(true));
+    document.getElementById('closeHelpBtn').addEventListener('click', () => showHelp(false));
+    document.getElementById('helpModal').addEventListener('click', (e) => { if (e.target.id === 'helpModal') showHelp(false); });
+
+    loadData();
+  </script>
+</body>
+</html>
