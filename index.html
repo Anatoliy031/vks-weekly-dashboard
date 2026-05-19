@@ -48,7 +48,7 @@
             <li>Документы живут в облаках и обновляются на тех же ссылках</li>
             <li>Сайт показывает только актуальные точки входа</li>
             <li>По каждому блоку есть ответственный, статус и суть</li>
-            <li>Для обновления страницы достаточно править только JSON-файл</li>
+            <li>Сотрудники правят только одну общую Google-таблицу</li>
           </ul>
         </div>
       </div>
@@ -101,27 +101,38 @@
       <div class="modal-head">
         <div>
           <h2 style="margin:0 0 8px">Как обновлять страницу каждую неделю</h2>
-          <div class="desc">Меняйте только JSON-файл, а не верстку. Ссылки на облачные документы должны быть постоянными.</div>
+          <div class="desc">Сотрудники меняют только строки в общей Google-таблице. Верстку трогать не нужно.</div>
         </div>
         <button class="modal-close" id="closeHelpBtn">Закрыть</button>
       </div>
-      <div class="code">1. Открыть data/documents.json
-2. Обновить weekLabel и pageUpdatedAt
-3. По нужным блокам обновить:
-   - status
-   - statusLabel
-   - updatedAt
-   - weekComment
-   - keyPoints
-4. Ссылки менять только если реально изменился адрес документа
-5. Закоммитить изменения в GitHub Pages репозиторий</div>
+      <div class="code">1. Открыть общую Google-таблицу
+2. В своей строке обновить:
+   - Статус
+   - Дата обновления
+   - Комментарий недели
+   - Тезис 1, 2, 3
+   - Ссылку, если она реально изменилась
+3. Таблица должна быть опубликована в CSV
+4. Сайт сам подтянет данные из Google Sheets
+5. Верстку сайта менять не нужно</div>
     </div>
   </div>
 
   <script>
     let pageData = null;
 
+    // ВАЖНО: сюда нужно подставить CSV-ссылку опубликованной Google-таблицы.
+    // Формат обычно такой:
+    // https://docs.google.com/spreadsheets/d/SPREADSHEET_ID/gviz/tq?tqx=out:csv&sheet=Лист1
+    const GOOGLE_SHEET_CSV_URL = '';
+
     const statusMap = { green: 'green', yellow: 'yellow', red: 'red', gray: 'gray' };
+    const statusLabelMap = {
+      'обновлено': { code: 'green', label: 'Обновлено' },
+      'требует внимания': { code: 'yellow', label: 'Требует внимания' },
+      'критично': { code: 'red', label: 'Критично' },
+      'без статуса': { code: 'gray', label: 'Без статуса' }
+    };
 
     function renderMeta(meta) {
       document.getElementById('pageTitle').textContent = meta.title || 'Материалы к еженедельному ВКС';
@@ -217,16 +228,98 @@
       document.getElementById('helpModal').classList.toggle('show', show);
     }
 
+    function parseCsvLine(line) {
+      const result = [];
+      let current = '';
+      let inQuotes = false;
+      for (let i = 0; i < line.length; i++) {
+        const char = line[i];
+        const next = line[i + 1];
+        if (char === '"') {
+          if (inQuotes && next === '"') {
+            current += '"';
+            i++;
+          } else {
+            inQuotes = !inQuotes;
+          }
+        } else if (char === ',' && !inQuotes) {
+          result.push(current);
+          current = '';
+        } else {
+          current += char;
+        }
+      }
+      result.push(current);
+      return result;
+    }
+
+    function parseCsv(text) {
+      const lines = text.replace(/^\uFEFF/, '').split(/\r?\n/).filter(Boolean);
+      if (!lines.length) return [];
+      const headers = parseCsvLine(lines[0]);
+      return lines.slice(1).map(line => {
+        const values = parseCsvLine(line);
+        const row = {};
+        headers.forEach((header, idx) => row[header] = values[idx] || '');
+        return row;
+      });
+    }
+
+    function normalizeSheetRows(rows) {
+      const documents = rows
+        .filter(row => String(row['Показывать блок'] || '').toUpperCase() !== 'FALSE')
+        .map(row => {
+          const rawStatus = String(row['Статус'] || 'Без статуса').trim().toLowerCase();
+          const normalizedStatus = statusLabelMap[rawStatus] || { code: 'gray', label: row['Статус'] || 'Без статуса' };
+          const links = [];
+          if (row['Основная ссылка']) links.push({ label: 'Открыть материал', url: row['Основная ссылка'], primary: true });
+          if (row['Резервная ссылка']) links.push({ label: 'Резервная ссылка', url: row['Резервная ссылка'], primary: false });
+          return {
+            id: `${row['Блок'] || 'block'}-${row['Название материала'] || 'item'}`.toLowerCase().replace(/\s+/g, '-'),
+            block: row['Блок'] || '',
+            title: row['Название материала'] || '',
+            status: normalizedStatus.code,
+            statusLabel: normalizedStatus.label,
+            owner: row['Ответственный'] || '',
+            updatedAt: row['Дата обновления'] || '',
+            storage: row['Хранилище'] || '',
+            summary: row['Краткое описание'] || '',
+            weekComment: row['Комментарий недели'] || '',
+            keyPoints: [row['Тезис 1'], row['Тезис 2'], row['Тезис 3']].filter(Boolean),
+            links,
+            sortOrder: Number(row['Порядок сортировки'] || 999)
+          };
+        })
+        .sort((a, b) => a.sortOrder - b.sortOrder);
+
+      return {
+        meta: {
+          title: 'Материалы к еженедельному ВКС',
+          subtitle: 'Единая страница для руководителя с актуальными ссылками на документы в облачных хранилищах.',
+          weekLabel: 'Неделя обновляется через заголовок таблицы или вручную в коде',
+          pageUpdatedAt: new Date().toLocaleString('ru-RU'),
+          ownerNote: 'Данные загружаются из Google Sheets. Сотрудники меняют только строки своей зоны ответственности.',
+          summaryNote: 'Если документ обновлен в облаке и строка в таблице актуализирована, страница автоматически покажет новое состояние.'
+        },
+        documents
+      };
+    }
+
     async function loadData() {
       try {
-        const res = await fetch('./data/documents.json', { cache: 'no-store' });
+        if (!GOOGLE_SHEET_CSV_URL) {
+          throw new Error('GOOGLE_SHEET_CSV_URL is empty');
+        }
+        const res = await fetch(GOOGLE_SHEET_CSV_URL, { cache: 'no-store' });
         if (!res.ok) throw new Error(`HTTP ${res.status}`);
-        pageData = await res.json();
+        const csvText = await res.text();
+        const rows = parseCsv(csvText);
+        pageData = normalizeSheetRows(rows);
         renderMeta(pageData.meta || {});
         renderStats(pageData.documents || []);
         renderDocuments(pageData.documents || []);
       } catch (err) {
-        document.getElementById('documentsGrid').innerHTML = `<div class="error-box">Не удалось загрузить data/documents.json. Проверь, что файл лежит по пути <b>data/documents.json</b> и опубликован в GitHub Pages.</div>`;
+        document.getElementById('documentsGrid').innerHTML = `<div class="error-box">Не удалось загрузить данные из Google Sheets. Нужно подставить в код опубликованную CSV-ссылку таблицы в переменную <b>GOOGLE_SHEET_CSV_URL</b>.</div>`;
         console.error(err);
       }
     }
